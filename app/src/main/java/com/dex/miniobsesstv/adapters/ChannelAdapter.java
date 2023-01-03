@@ -27,12 +27,26 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.big_slider_view,parent,false);
+
+        View v;
+        if(type.equals("slider")){
+
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.big_slider_view,parent,false);
+
+        }else{
+
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.new_cat_view,parent,false);
+        }
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+       /* if (holder.channelName != null && channels.get(position) != null) {
+            holder.channelName.setText(channels.get(position).getName());
+        }*/
+
         holder.channelName.setText(channels.get(position).getName());
         Picasso.get().load(channels.get(position).getThumbnail()).into(holder.channelImage);
 
